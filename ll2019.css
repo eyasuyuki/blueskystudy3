@@ -1,0 +1,6 @@
+@import-theme 'gaia';
+
+section {
+    width: 1024px;
+    height: 768px;
+}
