@@ -6,14 +6,6 @@ Blueskyに伏せ字投稿ができるWebアプリの作り方
 
 ---
 
-# 詳しくはZennに書きました。
-
-https://zenn.dev/eyasuyuki/articles/825b28b0ec0a4c
-
-![width:600px](https://github.com/eyasuyuki/blueskystudy3/blob/main/images/zenn.png?raw=true)
-
----
-
 # GitHubリポジトリ
 
 https://github.com/eyasuyuki/bluespoiler/
@@ -29,6 +21,27 @@ https://github.com/eyasuyuki/bluespoiler/
 - 画像サイズチェック
 - Bluesky接続部分とテスト
 - BlueskyへのPostと記事URLの推測
+
+---
+
+# 説明しないこと
+
+- fusetterの伏せ字アルゴリズムを勝手に推測する
+- Flutterのライブラリの使い方
+  - Riverpod
+  - Freezed
+  - ```go_router```
+  - ```flutter_hooks```
+  - ```image_picker_web```
+- Rich TextでURLをリンクさせる
+
+---
+
+# 詳しくはZennに書きました。
+
+https://zenn.dev/eyasuyuki/articles/825b28b0ec0a4c
+
+![width:600px](https://github.com/eyasuyuki/blueskystudy3/blob/main/images/zenn.png?raw=true)
 
 ---
 
@@ -113,10 +126,38 @@ https://github.com/eyasuyuki/bluespoiler/
 
 ## テストmain
 
+![width:800px](https://github.com/eyasuyuki/blueskystudy3/blob/main/images/test_main.png?raw=true)
+
 ---
 
-## 画像投稿のテスト(本当に投稿される)
+## 画像投稿のテスト
 
+![width:600px](https://github.com/eyasuyuki/blueskystudy3/blob/main/images/testPostArticle.png?raw=true)
 
+※ 本当に投稿されます。
 
 # BlueskyへのPostと記事URLの推測
+
+BlueskyにPostすると例えばこんな結果が帰ってきます。
+
+```json
+{"uri":"at://did:plc:dptps7rgxju4nrg6qskop2wz/app.bsky.feed.post/3kjmvo7ocl62e",
+ "cid":"bafyreihxcb3n6hxucw3hdeb3kylhzkoumitkx4hygoy24tyxt4hemajdde"}
+```
+
+Blueskyの記事URLはこんな感じです。
+
+https://bsky.app/profile/javaopen.org/post/3kjmvo7ocl62e
+
+```3kjmvo7ocl62e```が記事のID、```javaopen.org```は```session.data.handle```で取得できます。
+
+```dart
+final session = await bsky.createSession(identifier: article.id, password: article.password);
+```
+
+---
+
+## 記事URLの生成
+
+
+
