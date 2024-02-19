@@ -10,6 +10,8 @@ Blueskyに伏せ字投稿ができるWebアプリの作り方
 
 https://zenn.dev/eyasuyuki/articles/825b28b0ec0a4c
 
+![width:600px](https://github.com/eyasuyuki/blueskystudy3/blob/main/images/zenn.png?raw=true)
+
 ---
 
 # GitHubリポジトリ
@@ -25,7 +27,7 @@ https://github.com/eyasuyuki/bluespoiler/
 - なぜWebサービスやモバイルアプリとしてリリースしなかったのか
 - なぜFlutterで書いたのか
 - 画像サイズチェック
-- Bluesky接続部分のテストはどうしたか
+- Bluesky接続部分とテスト
 - BlueskyへのPostと記事URLの推測
 
 ---
@@ -47,9 +49,9 @@ https://github.com/eyasuyuki/bluespoiler/
 # なぜ作ろうと思ったのか
 
 - Blueskyにはfusetterがないので
-- だがfusetterみたいに自前サーバーを持つのは面倒だ
+- だがfusetterみたいに自前サーバーを持つのは面倒
 - 画像のALTなら1000文字まで入れられる(邪道)
-- 自前バックエンドは持たずにBlueskyだけを使う
+- 自前バックエンドは持たずにBlueskyとだけ通信すればいい
 
 ---
 
@@ -80,12 +82,41 @@ https://github.com/eyasuyuki/bluespoiler/
 
 ---
 
+## 画像選択部分のコード
 
+![width:800px](https://github.com/eyasuyuki/blueskystudy3/blob/main/images/pickImage.png?raw=true)
+
+---
+
+# Bluesky接続部分とテスト
+
+- とりあえず本当に接続してテストする
+- 本物のID/パスワードを隠蔽するために```flutter_dotenv```を使う
+- ```.gitignore```に```.env```を追加する
+- プロジェクトルートに```.env```ファイルを作成
+
+![width:600px](https://github.com/eyasuyuki/blueskystudy3/blob/main/images/dot_env.png?raw=true)
 
 ---
 
-# Bluesky接続部分のテストはどうしたか
+## Articleクラス
+
+![width:800px](https://github.com/eyasuyuki/blueskystudy3/blob/main/images/Article.png?raw=true)
 
 ---
+
+## Blueskyへの投稿
+
+![width:800px](https://github.com/eyasuyuki/blueskystudy3/blob/main/images/postArticle.png?raw=true)
+
+---
+
+## テストmain
+
+---
+
+## 画像投稿のテスト(本当に投稿される)
+
+
 
 # BlueskyへのPostと記事URLの推測
