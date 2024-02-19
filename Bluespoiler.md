@@ -20,7 +20,7 @@ https://github.com/eyasuyuki/bluespoiler/
 - なぜFlutterで書いたのか
 - 画像サイズチェック
 - Bluesky接続部分とテスト
-- BlueskyへのPostと記事URLの推測
+- 記事URLの推測
 
 ---
 
@@ -136,7 +136,9 @@ https://zenn.dev/eyasuyuki/articles/825b28b0ec0a4c
 
 ※ 本当に投稿されます。
 
-# BlueskyへのPostと記事URLの推測
+---
+
+# 記事URLの推測
 
 BlueskyにPostすると例えばこんな結果が帰ってきます。
 
@@ -149,15 +151,12 @@ Blueskyの記事URLはこんな感じです。
 
 https://bsky.app/profile/javaopen.org/post/3kjmvo7ocl62e
 
-```3kjmvo7ocl62e```が記事のID、```javaopen.org```は```session.data.handle```で取得できます。
-
-```dart
-final session = await bsky.createSession(identifier: article.id, password: article.password);
-```
-
+```3kjmvo7ocl62e```が記事のIDのようです。```javaopen.org```の部分は```session.data.handle```で取得できます。
 ---
 
 ## 記事URLの生成
 
+![width:800px](https://github.com/eyasuyuki/blueskystudy3/blob/main/images/guess_url.png?raw=true)
 
+## 投稿後の画面
 
