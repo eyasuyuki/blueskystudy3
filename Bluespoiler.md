@@ -19,8 +19,9 @@ https://github.com/eyasuyuki/bluespoiler/
 - なぜWebサービスやモバイルアプリとしてリリースしなかったのか
 - なぜFlutterで書いたのか
 - 画像サイズチェック
-- Bluesky接続部分とテスト
+- Blueskyへの接続とテスト
 - 記事URLの推測
+- 今後の展開
 
 ---
 
@@ -41,6 +42,8 @@ https://github.com/eyasuyuki/bluespoiler/
 
 https://zenn.dev/eyasuyuki/articles/825b28b0ec0a4c
 
+※ イイネください....
+
 ![width:600px](https://github.com/eyasuyuki/blueskystudy3/blob/main/images/zenn.png?raw=true)
 
 ---
@@ -56,6 +59,12 @@ https://zenn.dev/eyasuyuki/articles/825b28b0ec0a4c
 | 伏せ字投稿                                                                                          | ネタバレALT                                                                                           |
 ------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------
 | ![width:300px](https://raw.githubusercontent.com/eyasuyuki/blueskystudy3/main/images/post.jpg) | ![width:300px](https://raw.githubusercontent.com/eyasuyuki/blueskystudy3/main/images/spoiler.jpg) |
+
+---
+
+## デモ
+
+https://youtu.be/eZX9s03MDQc?si=bgW2A1EWXn87TGWZ
 
 ---
 
@@ -90,27 +99,20 @@ https://zenn.dev/eyasuyuki/articles/825b28b0ec0a4c
 # 画像サイズチェック
 
 - 976.56KBを超える画像をアップロードするとエラーになる
-- 976.56KB以下に圧縮してみたがWebクライアントサイドでは無理そう
+- 976.56KB以下に圧縮を試みたがWebクライアントサイドでは無理そう
 - 単に警告するだけにした
 
 ---
 
 ## 画像選択部分のコード
 
-![width:800px](https://github.com/eyasuyuki/blueskystudy3/blob/main/images/pickImage.png?raw=true)
+![width:700px](https://github.com/eyasuyuki/blueskystudy3/blob/main/images/pickImage.png?raw=true)
+
+※ Dartは```new```を省略できます。
 
 ---
 
-# Bluesky接続部分とテスト
-
-- とりあえず本当に接続してテストする
-- 本物のID/パスワードを隠蔽するために```flutter_dotenv```を使う
-- ```.gitignore```に```.env```を追加する
-- プロジェクトルートに```.env```ファイルを作成
-
-![width:600px](https://github.com/eyasuyuki/blueskystudy3/blob/main/images/dot_env.png?raw=true)
-
----
+# Blueskyへの接続とテスト
 
 ## Articleクラス
 
@@ -124,6 +126,17 @@ https://zenn.dev/eyasuyuki/articles/825b28b0ec0a4c
 
 ---
 
+## テスト
+
+- とりあえず本当に接続してテストする
+- 本物のID/パスワードを隠蔽するために```flutter_dotenv```を使う
+- ```.gitignore```に```.env```を追加する
+- プロジェクトルートに```.env```ファイルを作成
+
+![width:600px](https://github.com/eyasuyuki/blueskystudy3/blob/main/images/dot_env.png?raw=true)
+
+---
+
 ## テストmain
 
 ![width:800px](https://github.com/eyasuyuki/blueskystudy3/blob/main/images/test_main.png?raw=true)
@@ -132,7 +145,7 @@ https://zenn.dev/eyasuyuki/articles/825b28b0ec0a4c
 
 ## 画像投稿のテスト
 
-![width:600px](https://github.com/eyasuyuki/blueskystudy3/blob/main/images/testPostArticle.png?raw=true)
+![width:550px](https://github.com/eyasuyuki/blueskystudy3/blob/main/images/testPostArticle.png?raw=true)
 
 ※ 本当に投稿されます。
 
@@ -140,23 +153,37 @@ https://zenn.dev/eyasuyuki/articles/825b28b0ec0a4c
 
 # 記事URLの推測
 
-BlueskyにPostすると例えばこんな結果が帰ってきます。
+BlueskyにPostすると例えばこんな結果が返る。
 
 ```json
 {"uri":"at://did:plc:dptps7rgxju4nrg6qskop2wz/app.bsky.feed.post/3kjmvo7ocl62e",
  "cid":"bafyreihxcb3n6hxucw3hdeb3kylhzkoumitkx4hygoy24tyxt4hemajdde"}
 ```
 
-Blueskyの記事URLはこんな感じです。
+Blueskyの記事URLはこんな感じ。
 
 https://bsky.app/profile/javaopen.org/post/3kjmvo7ocl62e
 
-```3kjmvo7ocl62e```が記事のIDのようです。```javaopen.org```の部分は```session.data.handle```で取得できます。
+- ```3kjmvo7ocl62e```が記事のIDっぽい
+- ```javaopen.org```の部分は```session.data.handle```で取得できる
 ---
 
 ## 記事URLの生成
 
 ![width:800px](https://github.com/eyasuyuki/blueskystudy3/blob/main/images/guess_url.png?raw=true)
 
+---
+
 ## 投稿後の画面
 
+![width:800px](https://github.com/eyasuyuki/blueskystudy3/blob/main/images/after_post.jpg?raw=true)
+
+---
+
+# 今後の展開
+
+- 認証方法の改善(Bluesky待ち)
+- ログをとる(Google Analytics?)
+- 伏せ字投稿ランキング?
+
+発表させていただきありがとうございました。
